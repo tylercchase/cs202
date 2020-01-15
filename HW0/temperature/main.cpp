@@ -12,21 +12,32 @@ double cpp_ftoc(const char* str){
 double c_ctof(const char* str){
     char* end;
     return std::strtod(str, &end) * 9 / 5 + 32;
-    
 }
 
 int main(int argc, char* argv[]){
     //check if arguments supplied match required length
     if(argc == 3){
-        if( strcmp(argv[1],"--ftoc") == 0){
-            cout << cpp_ftoc(argv[2]) << endl;
+        //check if the third arg is a number using c library
+        char* p;
+        double converted = strtod(argv[2], &p);
+
+        if (!*p) {
+
+            if( strcmp(argv[1],"--ftoc") == 0){
+                cout << cpp_ftoc(argv[2]) << endl;
+            }
+            else if(strcmp(argv[1],"--ctof") == 0){
+                cout << c_ctof(argv[2]) << endl;
+            }
+            else{
+                cout << "Invalid argument" << argv[1] << endl;
+            }
+
         }
-        else if(strcmp(argv[1],"--ctof") == 0){
-            cout << c_ctof(argv[2]) << endl;
+        else {
+            cout << "Not a number input: " << argv[2] << endl;
         }
-        else{
-            cout << "Invalid argument" << argv[1] << endl;
-        }
+
     }
     else{
         cout << "Invalid number of arguments" << endl;
