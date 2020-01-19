@@ -62,17 +62,19 @@ void findExcerpt(int numLines){
     
     srand (time(NULL));
     int start = numLines - (rand() % (numLines-100));
+    
     //Make sure start won't cross the EOF
     if(start > numLines - 50){
         start -= 50;
     }
 
+    //Go to place in file
     for(int x = 0; x < start; x++){
         getline(myfile,line);
     }
+
     int counter = 0;
     do{
-
         if(isspace(line[1])){
             counter++;
         }
@@ -80,11 +82,12 @@ void findExcerpt(int numLines){
             counter = 0;
         }
     }while(getline(myfile,line) && counter != 2);
-    if(getline(myfile,line)){
 
-    }else{
+    if(!getline(myfile,line)){
         std::cout << "uh oh reached EOF" << std::endl;
     }
+
+    //Grab 10 lines for an except
     std::vector<std::string> output;
     for(int i = 0; i < 10; i++){
         getline(myfile,line);
@@ -94,6 +97,7 @@ void findExcerpt(int numLines){
     for( auto x : output){
         cout << x << endl;
     }
+
     myfile.close();
 }
 
@@ -103,11 +107,9 @@ int main(int argc, char* argv[]){
     if(argc == 3 && !*p && converted > 0){
         //check if the third arg is a number using c library
         if (!*p) {
-
             if( strcmp(argv[1],"-b") == 0){
                 download(std::stoi(argv[2]),0);
             }
-
         }
         else {
             cout << "Not a number input: " << argv[2] << endl;
