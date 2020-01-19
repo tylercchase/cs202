@@ -1,8 +1,10 @@
 #include <iostream>
-#include <string>
+#include <string.h>
 #include <fstream>
 #include <time.h>
-
+#include <vector>
+using std::cout;
+using std::endl;
 bool download(int number, int type){
     std::string command;
     auto newType = type + 1;
@@ -24,7 +26,6 @@ bool download(int number, int type){
     {
         std::string line;
         getline (myfile,line);
-        std::cout << line << std::endl;
         myfile.close();
 
         if(line != ""){
@@ -49,19 +50,63 @@ int getNumLines(){
 
     while (std::getline(myfile, line))
         ++numLines;
+    myfile.close();
     return numLines;
 }
 
 
-int main(){
-    if(download(250,0)){
-        std::cout << "Succesful download" << std::endl;
-    } 
-    else {
-        std::cout << "Unsuccesful download" << std::endl;
-    }
-    int numLines = getNumLines();
-    std::cout << numLines << std::endl;
+void findExcerpt(int numLines){
+    std::string line;
+    std::ifstream myfile ("output.txt");
 
-    // std::string command = "wget -O stdout";
+    
+    srand (time(NULL));
+    int start = numLines - (rand() % (numLines-100));
+    //Make sure start won't cross the EOF
+    if(start > numLines - 50){
+        start -= 50;
+    }
+
+    for(int x = 0; x < start; x++){
+        std::getline(myfile,line);
+    }
+
+    std::vector<std::string> output;
+    for(int i = 0; i < 10; i++){
+        getline(myfile,line);
+        output.push_back(line);
+    }
+
+    for( auto x : output){
+        cout << x << endl;
+    }
+}
+
+int main(int argc, char* argv[]){
+    char* p;
+    double converted = strtod(argv[2], &p);
+    if(argc == 3 && !*p){
+        //check if the third arg is a number using c library
+        if (!*p) {
+
+            if( strcmp(argv[1],"-b") == 0){
+                cout << download(std::stoi(argv[2]),0) << endl;
+            }
+
+        }
+        else {
+            cout << "Not a number input: " << argv[2] << endl;
+            return false;
+        }
+
+    }
+    else{
+        srand (time(NULL));
+        int random = rand() % 60000 + 1;
+        download(random,0);
+    }
+
+    int numLines = getNumLines();
+    findExcerpt(numLines);
+    return 0;
 }
