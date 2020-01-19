@@ -68,9 +68,23 @@ void findExcerpt(int numLines){
     }
 
     for(int x = 0; x < start; x++){
-        std::getline(myfile,line);
+        getline(myfile,line);
     }
+    int counter = 0;
+    do{
 
+        if(isspace(line[1])){
+            counter++;
+        }
+        else{
+            counter = 0;
+        }
+    }while(getline(myfile,line) && counter != 2);
+    if(getline(myfile,line)){
+
+    }else{
+        std::cout << "uh oh" << std::endl;
+    }
     std::vector<std::string> output;
     for(int i = 0; i < 10; i++){
         getline(myfile,line);
