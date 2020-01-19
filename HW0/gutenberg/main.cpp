@@ -83,7 +83,7 @@ void findExcerpt(int numLines){
     if(getline(myfile,line)){
 
     }else{
-        std::cout << "uh oh" << std::endl;
+        std::cout << "uh oh reached EOF" << std::endl;
     }
     std::vector<std::string> output;
     for(int i = 0; i < 10; i++){
@@ -94,17 +94,18 @@ void findExcerpt(int numLines){
     for( auto x : output){
         cout << x << endl;
     }
+    myfile.close();
 }
 
 int main(int argc, char* argv[]){
     char* p;
     double converted = strtod(argv[2], &p);
-    if(argc == 3 && !*p){
+    if(argc == 3 && !*p && converted > 0){
         //check if the third arg is a number using c library
         if (!*p) {
 
             if( strcmp(argv[1],"-b") == 0){
-                cout << download(std::stoi(argv[2]),0) << endl;
+                download(std::stoi(argv[2]),0);
             }
 
         }
