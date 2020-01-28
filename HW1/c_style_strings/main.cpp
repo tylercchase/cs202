@@ -25,10 +25,34 @@ char* strdup(const char* input){
     return output;
 }
 
+// finds the first occurrence of the C-style string x in s.
+char* findx(const char* s, const char* x){
+
+    auto s_count = count_char(s);
+    auto x_count = count_char(x);
+
+    for(int count_across_s = 0; count_across_s < (s_count); ++count_across_s){
+        if(s[count_across_s] == x[0]){
+                    char* possibly_found = (char*) s+count_across_s;
+
+            for (int count_across_x = 0; count_across_x < s_count; ++count_across_x){
+                if (s[count_across_x + count_across_s] != x[count_across_x]) {
+                    break;
+                }
+                if (count_across_x == x_count -1) {
+                    return possibly_found;
+                }
+            }
+        }
+    }
+    char* a = (char*) "not found";
+    return a;
+    
+}
 int main(){
     const char* test = "If you prick us do we not bleed? If you tickle us do we not laugh? If you poison us do we not die? And if you wrong us shall we not revenge?";
     auto out = strdup(test);
     std::cout << "--Test string--: " << test << std::endl;
     std::cout << "--Char* on stack--: " << out << std::endl;
-
+    std::cout << findx(test, "asdf") << std::endl;
 }
