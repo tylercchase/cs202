@@ -25,8 +25,8 @@ int main(){
     std::random_device rd;
     std::mt19937 gen(rd());
     StopWatch timer;
-    std::vector<int> amounts{10,100,1000,10000,1000000,1000000,1000000000};
-
+    std::vector<int> amounts{10,100,1000,10000,1000000,10000000,1000000000};
+    std::cout << "----------Running c++ std::search-----------" << std::endl;
     for(int i = 0; i < amounts.size(); i++){
         std::uniform_int_distribution<> dis(1,amounts[i]);
         auto stuff = gen_group(amounts[i]);
@@ -39,6 +39,29 @@ int main(){
             std::cout  << timer.get_time_milsec() << std::endl;
         }
     }
-    timer.end();
+    std::cout << "----------Running c++ std::binary_search-----------" << std::endl;
+    for(int i = 0; i < amounts.size(); i++){
+        std::uniform_int_distribution<> dis(1,amounts[i]);
+        auto stuff = gen_group(amounts[i]);
+        std::cout << "Running search 5 times on dataset of size: " << amounts[i] << std::endl;
+        for(int x = 0; x < 5; x++){
+            timer.start();
+            std::binary_search(stuff.begin(),stuff.end(),dis(gen));
+            timer.end();
+            std::cout  << timer.get_time_milsec() << std::endl;
+        }
+    }
+    std::cout << "----------Running c++ find-----------" << std::endl;
+    for(int i = 0; i < amounts.size(); i++){
+        std::uniform_int_distribution<> dis(1,amounts[i]);
+        auto stuff = gen_group(amounts[i]);
+        std::cout << "Running search 5 times on dataset of size: " << amounts[i] << std::endl;
+        for(int x = 0; x < 5; x++){
+            timer.start();
+            find(stuff.begin(),stuff.end(),dis(gen));
+            timer.end();
+            std::cout  << timer.get_time_milsec() << std::endl;
+        }
+    }
     return 0;
 }
