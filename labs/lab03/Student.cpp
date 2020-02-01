@@ -21,3 +21,6 @@ Student::Student(int age, double gpa){
 Student::~Student(){
     std::cout << "Deconstruct woo" << std::endl;
 }
+int Student::getAge(){
+    return _age;
+}

@@ -27,7 +27,9 @@ int main(){
     std::vector<Student> vecotrOfStudent(5,Student());
     //Create a copy #2
     auto studentCopy = student;
+    std::cout << "Checking for RVO" << std::endl;
     auto studentMade = makeStudent();
+    std::cout << "Checking for RVO" << std::endl;
     printAllGpa(vecotrOfStudent);
     printAllAge(vecotrOfStudent);
 }
