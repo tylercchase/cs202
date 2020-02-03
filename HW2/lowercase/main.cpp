@@ -24,5 +24,8 @@ TEST_CASE("Lowercase test","[lowercase]"){
     char test[] = "Hello World!";
     to_lower(test);
     std::cout << test << std::endl;
-    REQUIRE(test == "hello world!");
+    char final[] = "hello world!";
+    std::cout << final << std::endl;
+
+    REQUIRE(std::strcmp(test,final) == 0);
 }
