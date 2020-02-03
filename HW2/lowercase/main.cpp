@@ -10,18 +10,18 @@ int count_char(char* input){
     return counter;
 }
 
-void to_lower(char *s){
+void to_lower( char *s){
     int counter = count_char(s);
-    for (int i = 0; i < counter; i++){
-        if(*(s+i) >= 65 && *(s+i) <= 90){
-            *(s+i) = (*(s+i)+40);
+    for (int i = 0; i < (counter-1); i++){
+        if(s[i] >= 65 && s[i] <= 90){
+            s[i] += 32;
         }
     }
     std::cout << counter << *(s+1) << std::endl;
 }
 
 TEST_CASE("Lowercase test","[lowercase]"){
-    char* test = (char*)"Hello World!";
+    char test[] = "Hello World!";
     to_lower(test);
     std::cout << test << std::endl;
     REQUIRE(test == "hello world!");
