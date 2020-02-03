@@ -37,24 +37,26 @@ TEST_CASE("Test pokemon","[pokemon]"){
     pokemons.pop_front();
     REQUIRE(pokemons.front()->_name == "Squirtle");
 
-    // //Stack
+    // Stack
     pokemons.push_back(std::make_shared<pokemon>("Pidgey","flying","Power Bracer",9,4,5));
     REQUIRE(pokemons.back()->_name == "Pidgey");
     pokemons.pop_back();
     REQUIRE(pokemons.back()->_name == "Rattata");
 
-    // //Insert and Find
+    // Insert and Find
     std::shared_ptr<pokemon> found;
 
     for(auto i = pokemons.begin(); i != pokemons.end(); i++){
         if(i->get()->_name == "Bulbasaur"){
             found = *i;
+            *i = std::make_shared<pokemon>("Bayleef","grass","Big root",15,8,10);
             break;
         }
     }
     REQUIRE(found->_name == "Bulbasaur");
-    
-    // //Print list out
+    pokemons.pop_front();
+    REQUIRE(pokemons.front()->_name == "Bayleef");
+    //Print list out
     for(auto poke : pokemons){
         std::cout << "Name: " << poke->_name << std::endl;
         std::cout << "Type: " << poke->_type << std::endl;
