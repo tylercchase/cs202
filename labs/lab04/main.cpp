@@ -16,12 +16,12 @@ int main(){
     while(getline(readFile,line)){
         std::cout << line << std::endl;
         int numWords{0};
-        
         if(line == ""){
             paraTracker++;
         }else{
             wordTracker += (1 + std::count( line.begin(), line.end(), ' ' ));
         }
+        
 
         charTracker += line.length();
         lineTracker++;
