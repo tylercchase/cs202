@@ -19,7 +19,7 @@ int main(){
         if(line == ""){
             paraTracker++;
         }else{
-            wordTracker += (1 + std::count( line.begin(), line.end(), ' ' ));
+            wordTracker += (1 + std::count( line.begin(), line.end(), ' ' ))
         }
         
 
