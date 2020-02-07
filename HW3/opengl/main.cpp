@@ -1,7 +1,6 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-#include <stdio.h>
 #include <string>
 #include <cmath>
 #define SCREEN_WIDTH 640
@@ -35,6 +34,7 @@ bool init()
 
 		//Create window
 		gWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+        SDL_SetWindowFullscreen(gWindow,SDL_WINDOW_FULLSCREEN);
 		if( gWindow == NULL )
 		{
 			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
