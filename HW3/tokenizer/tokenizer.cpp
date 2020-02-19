@@ -6,7 +6,24 @@
 
 bool tokenizer::LineToTokens(const std::string& line,
 std::vector<std::string>& tokens){
-
+    if(line.size() == 0){
+            tokens.push_back("blank line");
+            return false;
+    }
+    else{
+        for(int i = 0; i < line.size(); i++){
+            if(line[i]){
+                std::string output{""};
+                int stepper;
+                do{
+                    output += line[i];
+                        i++;
+                }while(!std::isspace(line[i]) && line[i]);
+                tokens.push_back(output);
+                }
+            }
+        return true;
+    }
 }
 
 bool tokenizer::ReadLine(std::istream& is,
