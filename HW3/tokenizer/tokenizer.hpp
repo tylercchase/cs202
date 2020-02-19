@@ -1,6 +1,6 @@
 #ifndef TOKENIZER_HPP
 #define TOKENIZER_HPP
-
+#include <vector>
 namespace tokenizer{
     bool LineToTokens(const std::string& line,
     std::vector<std::string>& tokens);
