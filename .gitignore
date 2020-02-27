@@ -3,3 +3,5 @@
 catch.hpp
 LabGLFW.o
 main.exec
+*.o
+*.out
