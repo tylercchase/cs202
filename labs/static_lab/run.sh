@@ -1,3 +1,3 @@
-g++ -c StopWatch.cpp -I.
-ar -crs libcoolLibrary.a *.o
-g++ main.cpp -LlibcoolLibrary.a -I. && ./a.out
+g++ -c StopWatch.cpp -o StopWatch.o -I.
+ar -crs libStopWatch.a StopWatch.o
+g++ main.cpp -L. -lStopWatch -I. && ./a.out
