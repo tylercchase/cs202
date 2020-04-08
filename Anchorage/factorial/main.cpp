@@ -7,7 +7,14 @@ int factorial(int n){
     return n * factorial(n-1);
 }
 int factorial_loop(int n){
-    return 0;
+    if(n == 0 || n == 1){
+        return  1;
+    }
+    int result{1};
+    for(int x=2; x <= n; x++){
+        result = result * x;
+    }
+    return result;
 }
 
 
@@ -24,7 +31,8 @@ int main(){
         std::cout << "Result: " << factorial(userNumber) << std::endl;
         break;
     case 2:
-        std::cout << "Result" << factorial_loop(userNumber) << std::endl;
+        std::cout << "Result: " << factorial_loop(userNumber) << std::endl;
+        break;
     default:
         std::cout << "Invalid menu selection" << std::endl;
     }
