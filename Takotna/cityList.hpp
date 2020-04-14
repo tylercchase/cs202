@@ -1,5 +1,6 @@
 #include <vector>
-
+#include "cityNode.hpp"
 class CityList {
-    // std::vector<>
+    std::vector<CityNode> CityNodes;
+    
 };
