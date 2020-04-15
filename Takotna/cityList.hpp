@@ -4,9 +4,9 @@
 #include "cityNode.hpp"
 class CityList {
     public:
-        std::vector<CityNode> CityNodes;
 
         void loadCitiesFromFile(std::string filename);
     private:
+        std::vector<CityNode> CityNodes;
     
 };

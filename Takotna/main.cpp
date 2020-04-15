@@ -3,5 +3,5 @@
 #include "cityList.hpp"
 int main(){
     CityList list{};
-    list.loadCitiesFromFile("Hello");
+    list.loadCitiesFromFile("test.tsp");
 }
