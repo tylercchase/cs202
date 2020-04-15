@@ -7,10 +7,9 @@ class CityNode {
         double graphy;
 
     public:
-
-    public:
         CityNode(unsigned int _number, double _latitude, double _longitude):
             number(_number), latitude(_latitude),longitude(longitude){};
+        CityNode();
         unsigned int getNumber()
         {
             return number;
