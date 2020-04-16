@@ -17,9 +17,7 @@ void CityList::loadCitiesFromFile(std::string filename){
                 }
                 iss >> latitude;
                 iss >> longitude;
-                std::cout << longitude << std::endl;
                 CityNodes.push_back(CityNode{nodeNumber,latitude,longitude});
-                std::cout << line << std::endl;
             }
             else if(line == "NODE_COORD_SECTION"){
                 onCoords = true;
@@ -33,9 +31,14 @@ void CityList::loadCitiesFromFile(std::string filename){
     else{
         std::cout << "Unable to open file" << std::endl;
     }
-        std::cout << CityNodes[0].getNumber() << " " << CityNodes[0].getLatitude() << " " << CityNodes[0].getLongitude() << std::endl;
 }
 
-double CityList::distance(int first,int second) const{
+double CityList::distance(int first,int second) {
+    if(first >= 0 && first < CityNodes.size() && second >= 0 || second < CityNodes.size()){
+        if(first ==  second){
+            return 0;
+        }
+        return sqrt(pow(CityNodes[second].getLatitude() - CityNodes[first].getLatitude() ,2) + pow(CityNodes[second].getLongitude() - CityNodes[first].getLongitude() ,2));
+    }
     return 0;
 }

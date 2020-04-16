@@ -1,3 +1,4 @@
+#include <iostream>
 class CityNode {
     private:
         unsigned int number;
@@ -8,7 +9,7 @@ class CityNode {
 
     public:
         CityNode(unsigned int _number, double _latitude, double _longitude):
-            number(_number), latitude(_latitude),longitude(longitude){};
+            number(_number), latitude(_latitude),longitude(_longitude){};
         CityNode();
         unsigned int getNumber()
         {
