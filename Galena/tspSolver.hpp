@@ -12,5 +12,5 @@ class TspSolver {
             _cities = cities;
         }
         void solveRandomly(int repeat);
-
+        void solveGreedy();
 };

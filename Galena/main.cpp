@@ -10,5 +10,8 @@ int main(){
     TspSolver solver;
     std::cout << list.getCities().size() << std::endl;
     solver.setCities(list);
+    std::cout << "Solve random" << std::endl;
     solver.solveRandomly(1);
+    std::cout << "Solve greedy" << std::endl;
+    solver.solveGreedy();
 }
