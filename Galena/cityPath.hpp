@@ -5,4 +5,6 @@ class CityPath {
         std::vector<int> connections;
     public:
         CityPath();
+        std::vector<int>& getConnections();
+        void setConnections(std::vector<int> &connections);
 };

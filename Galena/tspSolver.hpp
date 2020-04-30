@@ -6,6 +6,6 @@ class TspSolver {
         CityPath cityPath;
         unsigned int bestDistance;
     public:
-        void solveRandomly(int start);
+        void solveRandomly();
 
 };
