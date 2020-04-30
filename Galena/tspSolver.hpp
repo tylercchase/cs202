@@ -1,11 +1,16 @@
+
 #include "cityList.hpp"
 #include "cityPath.hpp"
+
 class TspSolver {
     private:
-        CityList cities;
-        CityPath paths;
+        CityList _cities;
+        CityPath _paths;
         unsigned int bestDistance;
     public:
-        void solveRandomly();
+        void setCities(CityList &cities){
+            _cities = cities;
+        }
+        void solveRandomly(int repeat);
 
 };

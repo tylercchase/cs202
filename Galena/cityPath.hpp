@@ -1,13 +1,15 @@
 #ifndef cityPath
 #define cityPath
 #include <vector>
+#include "cityNode.hpp"
 
 class CityPath {
     private:
-        std::vector<int> connections;
+        std::vector<CityNode> connections{};
     public:
-        CityPath();
-        std::vector<int>& getConnections();
-        void setConnections(std::vector<int> &connections);
+        std::vector<CityNode>& getConnections();
+        void setConnections(std::vector<CityNode> &connections);
+        void addCity(CityNode &city);
+        int totalDistance();
 };
 #endif
