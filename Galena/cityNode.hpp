@@ -1,3 +1,5 @@
+#ifndef cityNode
+#define cityNode
 #include <iostream>
 class CityNode {
     private:
@@ -62,3 +64,4 @@ class CityNode {
         }
 
 };
+#endif

@@ -1,3 +1,5 @@
+#ifndef cityPath
+#define cityPath
 #include <vector>
 
 class CityPath {
@@ -8,3 +10,4 @@ class CityPath {
         std::vector<int>& getConnections();
         void setConnections(std::vector<int> &connections);
 };
+#endif
