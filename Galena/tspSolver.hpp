@@ -13,4 +13,5 @@ class TspSolver {
         }
         void solveRandomly(int repeat);
         void solveGreedy();
+        void SolveMyWay();
 };

@@ -48,7 +48,32 @@ void TspSolver::solveGreedy(){
             }
         }
     }
-        std::cout << "Total distance: " << chosenCities.totalDistance() << std::endl;
+    std::cout << "Total distance: " << chosenCities.totalDistance() << std::endl;
 
     
+}
+void TspSolver::SolveMyWay(){
+    //Find the longest way possible
+    std::random_device device;
+    std::default_random_engine engine(device());
+    std::uniform_int_distribution<int> randomNumber(0, _cities.getCities().size() - 1);
+
+    auto unchosenCities = _cities.getCities();
+    CityPath chosenCities{};
+    int start = randomNumber(engine);
+    CityNode startCity = unchosenCities[start];
+    CityNode lastCity = startCity;
+    while(unchosenCities.size() > 1){
+        double closestDistance = 0;
+        for(int i = 0; i < unchosenCities.size(); i++){
+            double found = sqrt(pow((unchosenCities[i].getLatitude() - lastCity.getLatitude() ),2) + pow(unchosenCities[i].getLongitude() - lastCity.getLongitude() ,2));
+            if(closestDistance < found){
+                closestDistance = found;
+                chosenCities.addCity(unchosenCities[i]);
+                unchosenCities.erase(unchosenCities.begin() + i);
+            }
+        }
+    }
+    std::cout << "Total distance: " << chosenCities.totalDistance() << std::endl;
+
 }

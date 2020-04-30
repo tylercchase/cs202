@@ -14,4 +14,6 @@ int main(){
     solver.solveRandomly(1);
     std::cout << "Solve greedy" << std::endl;
     solver.solveGreedy();
+    std::cout << "Solve my way" << std::endl;
+    solver.SolveMyWay();
 }
