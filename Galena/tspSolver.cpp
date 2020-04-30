@@ -4,12 +4,13 @@
 #include <vector>
 
 void TspSolver::solveRandomly(int repeat){
+    int bestfound = 500000000;
+
     for(int x = 0; x < repeat; x++){
         std::random_device device;
         std::default_random_engine engine(device());
         std::uniform_int_distribution<int> randomNumber(0, _cities.getCities().size() - 1);
 
-        double bestfound = 1e12;
         auto unchosenCities = _cities.getCities();
         CityPath chosenCities{};
         int start = randomNumber(engine);
@@ -23,9 +24,11 @@ void TspSolver::solveRandomly(int repeat){
         int totalDistance = chosenCities.totalDistance();
         if(bestfound > totalDistance){
             bestfound = totalDistance;
+            solvedPath = chosenCities;
         }
-        std::cout << "Total distance: " << totalDistance << std::endl;
     }
+    std::cout << "Total distance: " << bestfound << std::endl;
+
 }
 void TspSolver::solveGreedy(){
     std::random_device device;
@@ -48,6 +51,7 @@ void TspSolver::solveGreedy(){
             }
         }
     }
+    solvedPath = chosenCities;
     std::cout << "Total distance: " << chosenCities.totalDistance() << std::endl;
 
     
@@ -74,6 +78,7 @@ void TspSolver::SolveMyWay(){
             }
         }
     }
+    solvedPath = chosenCities;
     std::cout << "Total distance: " << chosenCities.totalDistance() << std::endl;
 
 }
