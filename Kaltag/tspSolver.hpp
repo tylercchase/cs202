@@ -1,7 +1,7 @@
 
 #include "cityList.hpp"
 #include "cityPath.hpp"
-
+#include <string>
 class TspSolver {
     private:
         CityList _cities;
@@ -15,4 +15,5 @@ class TspSolver {
         void solveRandomly(int repeat);
         void solveGreedy();
         void SolveMyWay();
+        void outputSVG(std::string name);
 };

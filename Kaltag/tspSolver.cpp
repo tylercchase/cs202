@@ -82,3 +82,7 @@ void TspSolver::SolveMyWay(){
     std::cout << "Total distance: " << chosenCities.totalDistance() << std::endl;
 
 }
+void outputSVG(std::string name){
+    std::string templateStart;
+    std::string templateEnd;
+}
