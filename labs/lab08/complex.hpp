@@ -9,6 +9,7 @@ class Complex{
 
         };
         Complex operator+(const Complex complex);
+        Complex& operator+=(const Complex complex);
     private:
         double _real{0};
         double _imaginary{0};
